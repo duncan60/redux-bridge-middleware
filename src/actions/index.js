@@ -4,9 +4,7 @@ import * as types from 'constants/ActionTypes';
 let fetchSuccessed = (url) => {
     return {
         type: types.FETCH_SUCCESSED,
-        data: {
-            url
-        }
+        url
     };
 };
 
@@ -19,18 +17,14 @@ let fetchFailed = () => {
 let fetchPending = () => {
     return {
         type: types.FEATCH_PENDING,
-        data: {
-            isPending: true
-        }
+        isPending: true
     };
 };
 
 export const setSay = (say) => {
     return {
         type: types.SET_SAY,
-        data: {
-            say
-        }
+        say
     };
 };
 

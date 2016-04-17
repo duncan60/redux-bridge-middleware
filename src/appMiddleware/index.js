@@ -1,5 +1,6 @@
 import 'es6-promise';
 import 'isomorphic-fetch';
+import asyncReducer from './async-reducer';
 
 export default function appMiddleware () {
     return next => action => {
@@ -7,7 +8,7 @@ export default function appMiddleware () {
         if (!fetchAPI) {
             return next(action);
         }
-        const [ success, failure ] = types;
+        const [ success, failure, pending ] = types;
         const fetchSetting = {
             headers: {
                 'Content-Type': 'application/json'
@@ -15,13 +16,15 @@ export default function appMiddleware () {
             method : fetchAPI.method,
             body   : JSON.stringify(fetchAPI.body)
         };
-        return fetch(fetchAPI.path, fetchSetting)
+        next(pending());
+        fetch(fetchAPI.path, fetchSetting)
             .then(response => response.json())
             .then((json) => {
                 if (json.message === 'Not Found') {
                     next(failure(json));
                 } else {
-                    next(success(json));
+                    const reducerData = asyncReducer(success(json));
+                    next(success(reducerData));
                 }
             })
             .catch((err) => {

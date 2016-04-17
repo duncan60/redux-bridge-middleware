@@ -2,7 +2,8 @@ import * as types from '../constants/ActionTypes';
 
 let initialState = {
     say       : 'Hello React Redux Word!',
-    githubData: 'none'
+    githubData: 'none',
+    isPending : false
 };
 
 const hello = (state = initialState, action) => {
@@ -12,10 +13,16 @@ const hello = (state = initialState, action) => {
                 ...state,
                 say: action.say
             };
+        case types.FEATCH_PENDING:
+            return {
+                ...state,
+                isPending: action.isPending
+            };
         case types.FETCH_SUCCESSED:
             return {
                 ...state,
-                githubData: action.data.current_user_url
+                isPending : false,
+                githubData: action.data
             };
         default:
             return state;

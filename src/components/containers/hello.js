@@ -15,21 +15,30 @@ class Hello extends Component {
         this.props.fetchAPI();
     }
     render() {
+        const {
+            say,
+            githubData,
+            isPending
+        } = this.props;
         return (
             <div>
-                {this.props.say}
-                <button
-                    type="button"
-                    onClick={this._onClickHandler} >
-                    Click Me!
-                </button>
-                <button
-                    type="button"
-                    onClick={this._onFetchHandler} >
-                    fetchAPI!
-                </button>
-                github:
-                {this.props.githubData}
+                <div>
+                    <button
+                        type="button"
+                        onClick={this._onClickHandler} >
+                        Click Me!
+                    </button>
+                    {say}
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        onClick={this._onFetchHandler} >
+                        fetchAPI!
+                    </button>
+                    github:
+                    {isPending ? 'fetch pedding' : githubData}
+                </div>
             </div>
         );
     };
@@ -38,6 +47,7 @@ class Hello extends Component {
 Hello.propTypes = {
     say       : PropTypes.string.isRequired,
     githubData: PropTypes.string.isRequired,
+    isPending : PropTypes.bool.isRequired,
     setSay    : PropTypes.func.isRequired,
     fetchAPI  : PropTypes.func.isRequired
 };
@@ -45,7 +55,8 @@ Hello.propTypes = {
 export default connect(
     state => ({
         say       : state.hello.say,
-        githubData: state.hello.githubData
+        githubData: state.hello.githubData,
+        isPending : state.hello.isPending
     }),
     dispatch => bindActionCreators({
         setSay,

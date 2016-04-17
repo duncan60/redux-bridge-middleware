@@ -11,18 +11,18 @@ const hello = (state = initialState, action) => {
         case types.SET_SAY:
             return {
                 ...state,
-                say: action.say
+                say: action.data.say
             };
         case types.FEATCH_PENDING:
             return {
                 ...state,
-                isPending: action.isPending
+                isPending: action.data.isPending
             };
         case types.FETCH_SUCCESSED:
             return {
                 ...state,
                 isPending : false,
-                githubData: action.data
+                githubData: action.data.url
             };
         default:
             return state;

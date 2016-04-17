@@ -1,10 +1,12 @@
 import * as types from 'constants/ActionTypes';
 
 
-let fetchSuccessed = (data) => {
+let fetchSuccessed = (url) => {
     return {
         type: types.FETCH_SUCCESSED,
-        data
+        data: {
+            url
+        }
     };
 };
 
@@ -16,15 +18,19 @@ let fetchFailed = () => {
 
 let fetchPending = () => {
     return {
-        type     : types.FEATCH_PENDING,
-        isPending: true
+        type: types.FEATCH_PENDING,
+        data: {
+            isPending: true
+        }
     };
 };
 
 export const setSay = (say) => {
     return {
         type: types.SET_SAY,
-        say
+        data: {
+            say
+        }
     };
 };
 

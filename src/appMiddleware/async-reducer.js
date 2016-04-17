@@ -6,7 +6,9 @@ const asyncReducer = (action) => {
             /*
             * can do more thing, and handle Json data format
             */
-            return action.data.current_user_url;
+            return {
+            	url: action.data.url.current_user_url
+            };
         default:
             return action.data;
     };

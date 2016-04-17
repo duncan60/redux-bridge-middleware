@@ -1,6 +1,6 @@
 import 'es6-promise';
 import 'isomorphic-fetch';
-import asyncReducer from './async-reducer';
+//import asyncReducer from './async-reducer';
 
 export default function appMiddleware () {
     return next => action => {
@@ -23,8 +23,8 @@ export default function appMiddleware () {
                 if (json.message === 'Not Found') {
                     next(failure(json));
                 } else {
-                    const reducerData = asyncReducer(success(json));
-                    next(success(reducerData));
+                    //const reducerData = asyncReducer(success(json));
+                    next(success(json));
                 }
             })
             .catch((err) => {

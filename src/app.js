@@ -6,12 +6,13 @@ import { Provider } from 'react-redux';
 
 import rootReducer from 'reducers';
 import appMiddleware from 'appMiddleware';
+import asyncMiddleware from 'appMiddleware/async-middleware';
 
 import Root from 'components/containers/Root';
 
 
 const finalCreateStore = compose(
-    applyMiddleware(appMiddleware),
+    applyMiddleware(appMiddleware, asyncMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore);
 

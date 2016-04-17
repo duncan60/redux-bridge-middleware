@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 
 import rootReducer from 'reducers';
-import appMiddleware from 'appMiddleware';
+import appMiddleware from 'appMiddleware/app-middleware';
 import asyncMiddleware from 'appMiddleware/async-middleware';
 
 import Root from 'components/containers/Root';

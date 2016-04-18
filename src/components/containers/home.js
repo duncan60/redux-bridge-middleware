@@ -2,9 +2,9 @@ import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setSay, fetchAPI } from 'actions';
+import { setSay, fetchAPI } from 'actions/home';
 
-class AppContainer extends Component {
+class Home extends Component {
     constructor() {
         super();
     }
@@ -22,6 +22,7 @@ class AppContainer extends Component {
         } = this.props;
         return (
             <div>
+                <h1>HOME</h1>
                 <div>
                     <button
                         type="button"
@@ -44,7 +45,7 @@ class AppContainer extends Component {
     };
 };
 
-AppContainer.propTypes = {
+Home.propTypes = {
     say       : PropTypes.string.isRequired,
     githubData: PropTypes.string.isRequired,
     isPending : PropTypes.bool.isRequired,
@@ -54,12 +55,12 @@ AppContainer.propTypes = {
 
 export default connect(
     state => ({
-        say       : state.app.say,
-        githubData: state.app.githubData,
-        isPending : state.app.isPending
+        say       : state.home.say,
+        githubData: state.home.githubData,
+        isPending : state.home.isPending
     }),
     dispatch => bindActionCreators({
         setSay,
         fetchAPI
     }, dispatch)
-)(AppContainer);
+)(Home);

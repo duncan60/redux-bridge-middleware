@@ -7,7 +7,12 @@ const rootBridges = combineReducers({
 
 export default function bridgeMiddleware (store) {
     return next => action => {
-        const reducerAction = rootBridges(store.getState(), action)[action.birdgeKey];
+        const reducerAction = action.birdgeKey ?
+            rootBridges(
+                store.getState(),
+                action
+            )[action.birdgeKey] :
+            action;
         return next(reducerAction);
     };
 }

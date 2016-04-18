@@ -20,7 +20,6 @@ let fetchFailed = () => {
 let fetchPending = () => {
     return {
         type     : types.FEATCH_PENDING,
-        birdgeKey: BRIDGE_KEY,
         isPending: true
     };
 };
@@ -36,7 +35,6 @@ export const setSay = (say) => {
 export function fetchAPI() {
     return {
         types    : [fetchSuccessed, fetchFailed, fetchPending],
-        birdgeKey: BRIDGE_KEY,
         fetchAPI : {
             path  : 'https://api.github.com',
             method: 'GET'

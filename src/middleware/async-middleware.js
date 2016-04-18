@@ -1,7 +1,7 @@
 import 'es6-promise';
 import 'isomorphic-fetch';
 
-export default function appMiddleware () {
+export default function asyncMiddleware () {
     return next => action => {
         const { fetchAPI, types } = action;
         if (!fetchAPI) {

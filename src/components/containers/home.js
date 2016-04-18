@@ -22,7 +22,7 @@ class Home extends Component {
         } = this.props;
         return (
             <div>
-                <h1>HOME</h1>
+                <h1>redux bridge middleware</h1>
                 <div>
                     <button
                         type="button"

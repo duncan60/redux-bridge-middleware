@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Hello from './hello';
+import AppContainer from 'components/containers/app-container';
 
 export default class Root extends Component {
     constructor() {
@@ -8,7 +8,7 @@ export default class Root extends Component {
     render() {
         return (
             <div>
-                <Hello />
+                <AppContainer />
             </div>
         );
     };

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { setSay, fetchAPI } from 'actions';
 
-class Hello extends Component {
+class AppContainer extends Component {
     constructor() {
         super();
     }
@@ -44,7 +44,7 @@ class Hello extends Component {
     };
 };
 
-Hello.propTypes = {
+AppContainer.propTypes = {
     say       : PropTypes.string.isRequired,
     githubData: PropTypes.string.isRequired,
     isPending : PropTypes.bool.isRequired,
@@ -54,12 +54,12 @@ Hello.propTypes = {
 
 export default connect(
     state => ({
-        say       : state.hello.say,
-        githubData: state.hello.githubData,
-        isPending : state.hello.isPending
+        say       : state.app.say,
+        githubData: state.app.githubData,
+        isPending : state.app.isPending
     }),
     dispatch => bindActionCreators({
         setSay,
         fetchAPI
     }, dispatch)
-)(Hello);
+)(AppContainer);

@@ -8,7 +8,7 @@ import rootReducer from 'reducers';
 import appMiddleware from 'appMiddleware/app-middleware';
 import asyncMiddleware from 'appMiddleware/async-middleware';
 
-import Root from 'components/containers/Root';
+import Root from 'components/page/root';
 
 
 const finalCreateStore = compose(

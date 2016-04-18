@@ -6,7 +6,7 @@ let initialState = {
     isPending : false
 };
 
-const hello = (state = initialState, action) => {
+const app = (state = initialState, action) => {
     switch (action.type) {
         case types.SET_SAY:
             return {
@@ -29,4 +29,4 @@ const hello = (state = initialState, action) => {
     };
 };
 
-export default hello;
+export default app;

@@ -1,5 +1,5 @@
 {
-  "name": "redux-async-reducer",
+  "name": "redux-bridge-middleware",
   "version": "1.0.0",
   "description": "rto try different structure method for applyMiddleware",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/duncan60/redux-async-reducer"
+    "url": "https://github.com/duncan60/redux-bridge-middleware"
   },
   "keywords": [
     "react",

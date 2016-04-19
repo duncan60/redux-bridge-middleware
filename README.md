@@ -16,7 +16,7 @@ const anyBridge = (lastState, action) => {
             */
             return {
                 type: action.type,
-                someData: {}
+                data: action.someData
             };
         default:
             return action;
@@ -52,11 +52,11 @@ export default function bridgeMiddleware (store) {
 action 裡需要透過 bridge-middleware 處的話，可以帶 birdgeKey，藉由 key 得到 bridge-middleware 處理後的結果
 ``` js
 const BRIDGE_KEY = 'any';
-let fetchSuccessed = (url) => {
+let anySuccessed = (someData) => {
     return {
-        type     : types.FETCH_SUCCESSED,
+        type     : types.ANYACTION,
         birdgeKey: BRIDGE_KEY,
-        url
+        someData
     };
 };
 ```

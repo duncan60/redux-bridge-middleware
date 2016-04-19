@@ -59,6 +59,13 @@ let anySuccessed = (someData) => {
         someData
     };
 };
+# 如果不需要 bridge-middleware 特別處理， 則不需要帶 birdgeKey
+let anySuccessed = (someData) => {
+    return {
+        type: types.ANYACTION,
+        someData
+    };
+};
 ```
 ### applyMiddleware
 ``` js

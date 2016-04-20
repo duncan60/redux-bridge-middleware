@@ -5,9 +5,9 @@
 
 ## 使用
 ### create a bridge
-與 reducer 類似， lastState 會接收到目前最新 store 的 state，如果需要用 state 做邏輯判斷可以拿此來利用。依據 action.type 去做處理，最後 return 處理後的資訊，也可以在這邊做更多你想做的事情。
+仿造 reducer，依據 action.type 去做處理，最後 return 處理後的資訊， lastState 會接收到目前最新 store 的 state，如果需要 state 做邏輯判斷可以拿此來利用。也可以在這邊做更多你想做的事情。
 ``` js
-# src/middleware/bridges/any-bridge.js
+# src/bridges/any-bridge.js
 const anyBridge = (lastState, action) => {
     switch (action.type) {
         case types.ANYACTION:
@@ -26,20 +26,13 @@ const anyBridge = (lastState, action) => {
 export default anyBridge;
 ```
 ### bridge-middleware
-利用  redux 的 combineReducers 建立出 rootBridges， 之後 dispatch 經過 bridgeMiddleware 處理後，藉由 birdgeKey 得到對應的結果，最後配送給 reducer。
+在第一層 middleware 與 reducer 中間處理程式邏輯，在 bridgeMiddleware 處理後，藉由 birdgeKey 得到對應的結果，最後配送給 reducer。
 ``` js
 # src/middleware/bridge-middleware.js
-import { combineReducers } from 'redux';
-import any from './bridges/any-bridge';
-
-const rootBridges = combineReducers({
-    any
-});
-
-export default function bridgeMiddleware (store) {
-    return next => action => {
+export default function bridgeMiddleware (rootBridge) {
+    return store => next => action => {
         const reAction = action.birdgeKey ?
-            rootBridges(
+            rootBridge(
                 store.getState(),
                 action
             )[action.birdgeKey] :
@@ -67,9 +60,22 @@ let anySuccessed = (someData) => {
     };
 };
 ```
+### rootBridge
+利用 combineReducers 將多個 birdge 組合成 rootBridge。
+``` js
+import { combineReducers } from 'redux';
+import any from './anyBridge';
+
+const rootBridge = combineReducers({
+    any
+});
+
+export default rootBridge;
+```
 ### applyMiddleware
 ``` js
-const finalCreateStore = applyMiddleware(/* other middleware, */ bridgeMiddleware)(createStore);
+import rootBridge from 'bridges';
+const finalCreateStore = applyMiddleware(/* other middleware, */ bridgeMiddleware(rootBridge))(createStore);
 
 const store = finalCreateStore(rootReducer);
 ```

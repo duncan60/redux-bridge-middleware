@@ -1,14 +1,7 @@
-import { combineReducers } from 'redux';
-import home from './bridges/home';
-
-const rootBridges = combineReducers({
-    home
-});
-
-export default function bridgeMiddleware (store) {
-    return next => action => {
+export default function bridgeMiddleware (rootBridge) {
+    return store => next => action => {
         const reAction = action.birdgeKey ?
-            rootBridges(
+            rootBridge(
                 store.getState(),
                 action
             )[action.birdgeKey] :

@@ -1,5 +1,5 @@
 # redux-bridge-middleware
-在 bridge-middleware 層中，去處理需要針對 action 做額外動作的需求。
+建立與 reducer 對應的 bridge，在第一層 middleware後，藉由 bridge-middleware 去處理需要針對 action 做額外動作需求及 Side Effect 邏輯。
 ### work flow
 ![images](https://raw.githubusercontent.com/duncan60/redux-bridge-middleware/master/redux-bridge-middleware-flow.png)
 
@@ -7,7 +7,7 @@
 ### create a bridge
 仿造 reducer，依據 action.type 去做處理，最後 return 處理後的資訊， lastState 會接收到目前最新 store 的 state，如果需要 state 做邏輯判斷可以拿此來利用。也可以在這邊做更多你想做的事情。
 ``` js
-# src/bridges/any-bridge.js
+// src/bridges/any-bridge.js
 const anyBridge = (lastState, action) => {
     switch (action.type) {
         case types.ANYACTION:
@@ -52,7 +52,7 @@ let anySuccessed = (someData) => {
         someData
     };
 };
-# 如果不需要 bridge-middleware 特別處理， 則不需要帶 birdgeKey
+// 如果不需要 bridge-middleware 特別處理， 則不需要帶 birdgeKey
 let anySuccessed = (someData) => {
     return {
         type: types.ANYACTION,

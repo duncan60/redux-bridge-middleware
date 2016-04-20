@@ -13,9 +13,11 @@
     "url": "https://github.com/duncan60/redux-bridge-middleware"
   },
   "keywords": [
+    "javascript",
     "react",
     "reactjs",
     "redux",
+    "middleware",
     "webpack"
   ],
   "author": "Duncan Du",

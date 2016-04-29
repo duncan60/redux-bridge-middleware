@@ -5,12 +5,12 @@
 
 ## 使用
 ### create a bridge
-仿造 reducer，依據 action.type 去做處理，最後 return 處理後的資訊， lastState 會接收到目前最新 store 的 state，如果需要 state 做邏輯判斷可以拿此來利用。也可以在這邊做更多你想做的事情。
+仿造 reducer，依據 action.type 去做處理，最後 return 處理後的資訊，lastState 會接收到目前最新 store state tree，如果需要 state 做邏輯處理可以利用。也可以在這邊做更多你想做的事情。
 ``` js
 // src/bridges/any-bridge.js
 const anyBridge = (lastState, action) => {
     switch (action.type) {
-        case types.ANYACTION:
+        case types.ANY_ACTION:
             /*
             * can do more thing, and handle Json data format
             */
@@ -47,7 +47,7 @@ action 裡需要透過 bridge-middleware 處的話，可以帶 birdgeKey，藉�
 const BRIDGE_KEY = 'any';
 let anySuccessed = (someData) => {
     return {
-        type     : types.ANYACTION,
+        type     : types.ANY_ACTION,
         birdgeKey: BRIDGE_KEY,
         someData
     };
@@ -55,13 +55,13 @@ let anySuccessed = (someData) => {
 // 如果不需要 bridge-middleware 特別處理， 則不需要帶 birdgeKey
 let anySuccessed = (someData) => {
     return {
-        type: types.ANYACTION,
+        type: types.ANY_ACTION,
         someData
     };
 };
 ```
 ### rootBridge
-利用 combineReducers 將多個 birdge 組合成 rootBridge。
+利用 combineBridges 將多個 birdge 組合成 rootBridge。
 ``` js
 import { combineReducers } from 'redux';
 import any from './anyBridge';

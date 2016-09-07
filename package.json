@@ -58,6 +58,7 @@
     "classnames": "^2.2.3",
     "es6-promise": "^3.1.2",
     "isomorphic-fetch": "^2.2.1",
+    "normalizr": "^2.2.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",

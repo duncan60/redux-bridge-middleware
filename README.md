@@ -4,6 +4,18 @@
 ![images](https://raw.githubusercontent.com/duncan60/redux-bridge-middleware/master/redux-bridge-middleware-flow.png)
 
 ## 使用
+
+### install npm
+```
+$ npm install
+```
+### deployment
+```
+$ npm start
+# open this url in your browser
+# http://localhost:3000/
+```
+
 ### create a bridge
 仿造 reducer，依據 action.type 去做處理，最後 return 處理後的資訊，lastState 會接收到目前最新 store state tree，如果需要 state 做邏輯處理可以利用。也可以在這邊做更多你想做的事情。
 ``` js
@@ -79,4 +91,3 @@ const finalCreateStore = applyMiddleware(/* other middleware, */ bridgeMiddlewar
 
 const store = finalCreateStore(rootReducer);
 ```
-

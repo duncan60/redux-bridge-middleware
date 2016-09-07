@@ -36,8 +36,8 @@ const home = (lastState, action) => {
               author: user,
               contributors: arrayOf(user)
             });
-            const a = normalize(testData, article);
-            console.log('>>>', a);
+            const normalizeTest = normalize(testData, article);
+            console.log('normalizeTest>>>', normalizeTest);
             return {
                 type: action.type,
                 url

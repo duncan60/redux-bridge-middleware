@@ -14,27 +14,27 @@ const home = (lastState, action) => {
             * can do more thing, and handle Json data format
             */
             const testData = {
-                  ids: 1,
-                  title: 'Some Article',
-                  author: {
+                ids: 1,
+                title: 'Some Article',
+                author: {
                     id: 7,
                     name: 'Dan'
-                  },
-                  contributors: [{
+                },
+                contributors: [{
                     id: 10,
                     name: 'Abe',
                     commit:10
-                  }, {
+                }, {
                     id: 15,
                     name: 'Fred',
                     commit: 20
-                  }]
+                }]
             };
             const article = new Schema('articles', { idAttribute: 'ids', defaults: { likes: 0 } });
             const user = new Schema('users', { defaults: { commit: 0 }});
             article.define({
-              author: user,
-              contributors: arrayOf(user)
+                author: user,
+                contributors: arrayOf(user)
             });
             const normalizeTest = normalize(testData, article);
             console.log('normalizeTest>>>', normalizeTest);

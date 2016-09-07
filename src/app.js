@@ -11,8 +11,6 @@ import bridgeMiddleware from 'middleware/bridge-middleware';
 
 import Root from 'components/page/root';
 
-
-
 const finalCreateStore = compose(
     applyMiddleware(asyncMiddleware, bridgeMiddleware(rootBridge)),
     window.devToolsExtension ? window.devToolsExtension() : f => f

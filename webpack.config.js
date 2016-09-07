@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
     devtool: 'eval',
@@ -15,7 +16,8 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new DashboardPlugin({ port: 3001})
     ],
     module: {
         loaders: [

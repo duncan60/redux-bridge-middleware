@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "rto try different structure method for applyMiddleware",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dashboard -- node server.js",
     "test": "mocha --compilers js:babel-core/register 'src/**/*.test.js' --recursive",
     "test:watch": "npm run test -- --watch",
     "dev": "parallelshell 'npm run start' 'npm run test:watch'"
@@ -49,17 +49,18 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
+    "webpack-dashboard": "^0.1.8",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
-    "antd": "^0.12.7",
+    "antd": "^1.11.0",
     "classnames": "^2.2.3",
     "es6-promise": "^3.1.2",
     "isomorphic-fetch": "^2.2.1",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
-    "redux": "^3.4.0"
+    "redux": "^3.6.0"
   }
 }

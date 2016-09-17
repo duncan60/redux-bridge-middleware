@@ -5,19 +5,20 @@ var DashboardPlugin = require('webpack-dashboard/plugin');
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-hot-middleware/client',
+        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client?reload=true',
         './src/app'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: 'http://localhost:3000/static/'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new DashboardPlugin({ port: 3001})
+        new DashboardPlugin({ port: 3000})
     ],
     module: {
         loaders: [

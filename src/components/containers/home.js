@@ -22,7 +22,7 @@ class Home extends Component {
         } = this.props;
         return (
             <div>
-                <h1>redux bridge middleware</h1>
+                <h1>redux bridge middleware </h1>
                 <div>
                     <button
                         type="button"
@@ -37,8 +37,8 @@ class Home extends Component {
                         onClick={this._onFetchHandler} >
                         fetchAPI!
                     </button>
-                    github:
-                    {isPending ? 'fetch pedding' : githubData}
+                    user_url:
+                    {isPending ? 'fetch pedding' : githubData.user_url}
                 </div>
             </div>
         );
@@ -47,7 +47,7 @@ class Home extends Component {
 
 Home.propTypes = {
     say       : PropTypes.string.isRequired,
-    githubData: PropTypes.string.isRequired,
+    githubData: PropTypes.object.isRequired,
     isPending : PropTypes.bool.isRequired,
     setSay    : PropTypes.func.isRequired,
     fetchAPI  : PropTypes.func.isRequired
